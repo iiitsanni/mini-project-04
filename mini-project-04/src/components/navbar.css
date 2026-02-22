@@ -1,2 +1,57 @@
-@import "tailwindcss";
-@import "daisyui";
+#root{
+    ---darkblue:#0B2533;
+    ---deepnavy:#031926;
+    ---mediumteal:#468189;
+    ---softteal:#77ACA2;
+    ---mutedaqua:#9DBEBB;
+    ---warmsand:#F4E9CD;
+}
+.flex-none{
+    padding-right: inherit;
+    margin-right: 10px;
+}
+.dropdown{
+    padding:5px;
+}
+.navbar {
+    position: fixed;
+    background-color: var(---darkblue);
+    color: var(---warmsand);
+    z-index: 50;
+}
+.indicator {
+}
+
+.indicator-item{
+    background-color: transparent;
+    border: none;
+    color:var(---warmsand);
+
+}
+.btn:hover {
+    background-color: var(---warmsand);
+    color: var(---darkblue);
+
+}
+.user-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu{
+    margin-top: 15px;
+    background-color: var(---mutedaqua);
+    color: var(---darkblue);
+    box-shadow: var(---darkblue)10px 10px;
+    border: 1px solid var(---deepnavy);
+}
+.card{
+    margin-top: 15px;
+    background-color: var(---mutedaqua);
+    color: var(---darkblue);
+    box-shadow: var(---darkblue)10px 10px;
+    border: 1px solid var(---deepnavy);
+}
+.text-info{
+    color: var(---darkblue);
+}
