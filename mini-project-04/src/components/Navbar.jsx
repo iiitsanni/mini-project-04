@@ -5,7 +5,30 @@ import { FaRegUser } from "react-icons/fa";
 
 
 
-const Navbar = () => {
+
+
+const Navbar = ({ wishlist }) => {
+
+    const handleMovies = (movies) => {
+        if (movies.length === 0) {
+            return (
+                <p className="text-sm">
+                    No movies added yet
+                </p>
+            );
+        } else
+        return (
+            <ul className="text-sm max-h-40 overflow-y-auto">
+                {movies.map((movie) => (
+                    <li key={movie.title} className="py-1 border-b">
+                        {movie.title}
+                    </li>
+                ))}
+            </ul>
+        );
+    };
+
+
     return (
         <div className="navbar bg-base-100 shadow-sm">
           <div className="flex-1">
@@ -24,7 +47,7 @@ const Navbar = () => {
                 className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
                 <div className="card-body">
                   <span className="text-lg font-bold">Watchlist</span>
-                  <span className="text-info">Subtotal: 0 Movies</span>
+                    {handleMovies(wishlist)}
                   <div className="card-actions">
                     <button className="btnD btn-primary btn-block">Download List</button>
                   </div>

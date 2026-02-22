@@ -45,7 +45,7 @@ function App() {
   return (
       <>
           <div className='navbar'>
-         <Navbar/>
+         <Navbar wishlist={wishlist}/>
           </div>
         <div className="min-h-screen bg-base-100 p-6">
           {loading && <p className="text-center text-lg mt-10">Loading movies...</p>}
