@@ -6,15 +6,11 @@
     ---mutedaqua:#9DBEBB;
     ---warmsand:#F4E9CD;
 }
-.flex-none{
-    padding-right: inherit;
-    margin-right: 10px;
-}
+
 .dropdown{
     padding:5px;
 }
 .navbar {
-    position: fixed;
     background-color: var(---darkblue);
     color: var(---warmsand);
     z-index: 50;

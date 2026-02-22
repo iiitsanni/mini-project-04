@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MovieCard from "./components/MovieCard";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -62,6 +63,9 @@ function App() {
             ))}
           </div>
         </div>
+          <div className='footer'>
+              <Footer/>
+          </div>
           </>
   );
 }

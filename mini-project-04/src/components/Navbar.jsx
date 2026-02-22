@@ -7,7 +7,6 @@ import { FaRegUser } from "react-icons/fa";
 
 const Navbar = () => {
     return (
-        <section className='navbar'>
         <div className="navbar bg-base-100 shadow-sm">
           <div className="flex-1">
             <a className="btn btn-ghost text-xl">JAS Movies</a>
@@ -55,7 +54,6 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        </section>
     );
 }
 
