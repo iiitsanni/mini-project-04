@@ -1,0 +1,13 @@
+#root{
+    ---darkblue:#0B2533;
+    ---deepnavy:#031926;
+    ---mediumteal:#468189;
+    ---softteal:#77ACA2;
+    ---mutedaqua:#9DBEBB;
+    ---warmsand:#F4E9CD;
+}
+.footer{
+    color: var(---deepnavy);
+    background-color: var(---mediumteal);
+    box-shadow: var(---darkblue)10px -10px;
+}

@@ -1,9 +1,14 @@
+import React from 'react';
+
+const Footer = () => {
+    return (
 <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
   <nav className="grid grid-flow-col gap-4">
     <a className="link link-hover">About us</a>
     <a className="link link-hover">Contact</a>
-    <a className="link link-hover">Jobs</a>
-    <a className="link link-hover">Press kit</a>
+    <a className="link link-hover">Watchlist</a>
+      <a className="link link-hover">Already watched</a>
+    <a className="link link-hover">Terms & Conditions</a>
   </nav>
   <nav>
     <div className="grid grid-flow-col gap-4">
@@ -43,6 +48,10 @@
     </div>
   </nav>
   <aside>
-    <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+    <p>Copyright © {new Date().getFullYear()} - All right reserved by JAS Movies</p>
   </aside>
 </footer>
+    );
+}
+
+export default Footer;
