@@ -2,10 +2,7 @@ import React from 'react';
 import "./Navbar.css";
 import { MdOutlineLiveTv } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
-
-
-
-
+import logo from "../assets/JAS-Movie-logo-removebg-preview.png";
 
 const Navbar = ({ wishlist }) => {
 
