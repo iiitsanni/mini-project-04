@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MovieCard from "./components/MovieCard";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -41,22 +42,27 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-base-100 p-6">
-      {loading && <p className="text-center text-lg mt-10">Loading movies...</p>}
-      {error && <p className="text-center text-red-500 text-lg mt-10">Error loading movies: {error}</p>}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-        {movies.map((movie) => (
-          <MovieCard
-            key={movie.title}
-            movie={movie}
-            isWishlisted={wishlist.some((m) => m.title === movie.title)}
-            isWatched={watched.some((m) => m.title === movie.title)}
-            onToggleWishlist={toggleWishlist}
-            onToggleWatched={toggleWatched}
-          />
-        ))}
-      </div>
-    </div>
+      <>
+          <div className='navbar'>
+         <Navbar/>
+          </div>
+        <div className="min-h-screen bg-base-100 p-6">
+          {loading && <p className="text-center text-lg mt-10">Loading movies...</p>}
+          {error && <p className="text-center text-red-500 text-lg mt-10">Error loading movies: {error}</p>}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {movies.map((movie) => (
+              <MovieCard
+                key={movie.title}
+                movie={movie}
+                isWishlisted={wishlist.some((m) => m.title === movie.title)}
+                isWatched={watched.some((m) => m.title === movie.title)}
+                onToggleWishlist={toggleWishlist}
+                onToggleWatched={toggleWatched}
+              />
+            ))}
+          </div>
+        </div>
+          </>
   );
 }
 
