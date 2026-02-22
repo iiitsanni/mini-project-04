@@ -26,7 +26,7 @@ const Navbar = () => {
                   <span className="text-lg font-bold">Watchlist</span>
                   <span className="text-info">Subtotal: 0 Movies</span>
                   <div className="card-actions">
-                    <button className="btn btn-primary btn-block">Download List</button>
+                    <button className="btnD btn-primary btn-block">Download List</button>
                   </div>
                 </div>
               </div>

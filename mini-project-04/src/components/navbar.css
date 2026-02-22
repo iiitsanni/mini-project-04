@@ -27,8 +27,26 @@
 .btn:hover {
     background-color: var(---warmsand);
     color: var(---darkblue);
-
 }
+.btnD {
+    border: none;
+    outline: none;
+    background-color: var(---warmsand);
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(---darkblue);
+    border-radius: 5px;
+    transition: all ease 0.1s;
+    box-shadow: 0px 5px 0px 0px var(---darkblue);
+}
+
+.btnD:active {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 0px 0px var(---deepnavy);
+}
+
+
 .user-icon{
     display: flex;
     align-items: center;
@@ -41,6 +59,7 @@
     box-shadow: var(---darkblue)10px 10px;
     border: 1px solid var(---deepnavy);
 }
+
 .card{
     margin-top: 15px;
     background-color: var(---mutedaqua);
