@@ -3,6 +3,15 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+    ---darkblue:#0B2533;
+    ---deepnavy:#031926;
+    ---mediumteal:#468189;
+    ---softteal:#77ACA2;
+    ---mutedaqua:#9DBEBB;
+    ---warmsand:#F4E9CD;
+}
+body{
+    background-color: var(---warmsand) !important;
 }
 
 .logo {

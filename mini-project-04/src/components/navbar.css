@@ -39,6 +39,7 @@
     border-radius: 5px;
     transition: all ease 0.1s;
     box-shadow: 0px 5px 0px 0px var(---darkblue);
+    margin: 5px;
 }
 
 .btnD:active {
@@ -66,6 +67,15 @@
     color: var(---darkblue);
     box-shadow: var(---darkblue)10px 10px;
     border: 1px solid var(---deepnavy);
+    width: 350px;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
+.card-body li{
+    display: flex;
+    flex-direction: row;
 }
 .text-info{
     color: var(---darkblue);

@@ -4,7 +4,7 @@ import { MdOutlineLiveTv } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import logo from "../assets/JAS-Movie-logo-removebg-preview.png";
 
-const Navbar = ({ wishlist }) => {
+const Navbar = ({ wishlist, removeMovie }) => {
 
     const handleMovies = (movies) => {
         if (movies.length === 0) {
@@ -13,17 +13,9 @@ const Navbar = ({ wishlist }) => {
                     No movies added yet
                 </p>
             );
-        } else
-        return (
-            <ul className="text-sm max-h-40 overflow-y-auto">
-                {movies.map((movie) => (
-                    <li key={movie.title} className="py-1 border-b">
-                        {movie.title}
-                    </li>
-                ))}
-            </ul>
-        );
-    };
+        }
+    }
+
 
 
     return (
@@ -44,8 +36,15 @@ const Navbar = ({ wishlist }) => {
                 className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
                 <div className="card-body">
                   <span className="text-lg font-bold">Watchlist</span>
-                    {handleMovies(wishlist)}
-                  <div className="card-actions">
+                    <ul className="text-sm max-h-40 overflow-y-auto">
+                        {wishlist.map((movie) => (
+                            <li key={movie.title} className="py-1 border-b flex justify-between items-center">
+                                <span>{movie.title}</span>
+                                <button onClick={() =>  removeMovie(movie.title)} className="btnD text-xs px-2 py-1">Remove</button>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="card-actions">
                     <button className="btnD btn-primary btn-block">Download List</button>
                   </div>
                 </div>

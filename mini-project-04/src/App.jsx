@@ -41,11 +41,14 @@ function App() {
       setWatched([...watched, movie]);
     }
   };
+  const removeMovie = (title) => {
+      setWishlist([movies.filter((m) => m.title !== movie.title)]);
+  }
 
   return (
       <>
           <div className='navbar'>
-         <Navbar wishlist={wishlist}/>
+         <Navbar wishlist={wishlist} removeMovie={removeMovie}/>
           </div>
         <div className="min-h-screen bg-base-100 p-6">
           {loading && <p className="text-center text-lg mt-10">Loading movies...</p>}
