@@ -3,6 +3,7 @@ import MovieCard from "./components/MovieCard";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
+import Pagination from "./components/Pagination";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -15,6 +16,7 @@ function App() {
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
   const [sortOrder, setSortOrder] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Fetch movie data on mount
   useEffect(() => {
@@ -65,6 +67,24 @@ function App() {
     return result;
   }, [movies, searchQuery, selectedGenre, selectedAgeGroup, selectedYear, sortOrder]);
 
+  const MOVIES_PER_PAGE = 12;
+  const totalPages = Math.ceil(filteredMovies.length / MOVIES_PER_PAGE);
+  const paginatedMovies = useMemo(() => {
+    const startIndex = (currentPage - 1) * MOVIES_PER_PAGE;
+    const endIndex = startIndex + MOVIES_PER_PAGE;
+    return filteredMovies.slice(startIndex, endIndex);
+  }, [filteredMovies, currentPage]);
+
+  // Reset to page 1 when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedGenre, selectedAgeGroup, selectedYear, sortOrder]);
+
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   // Toggle wishlist
   const toggleWishlist = (movie) => {
     const exists = wishlist.find((m) => m.title === movie.title);
@@ -84,54 +104,61 @@ function App() {
       setWatched([...watched, movie]);
     }
   };
+
   const removeMovie = (title) => {
-      setWishlist([movies.filter((m) => m.title !== movie.title)]);
-  }
+    setWishlist(wishlist.filter((m) => m.title !== title));
+  };
 
   return (
-      <>
-          <div className='navbar'>
-         <Navbar wishlist={wishlist} removeMovie={removeMovie}/>
+    <>
+      <div className='navbar'>
+        <Navbar wishlist={wishlist} removeMovie={removeMovie} />
+      </div>
+      <div className="min-h-screen bg-base-100 p-6">
+        {loading && <p className="text-center text-lg mt-10">Loading movies...</p>}
+        {error && <p className="text-center text-red-500 text-lg mt-10">Error loading movies: {error}</p>}
+        {!loading && !error && (
+          <div className="flex justify-center mb-6">
+            <SearchBar
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              selectedGenre={selectedGenre}
+              onGenreChange={setSelectedGenre}
+              genres={genres}
+              selectedAgeGroup={selectedAgeGroup}
+              onAgeGroupChange={setSelectedAgeGroup}
+              ageGroups={ageGroups}
+              selectedYear={selectedYear}
+              onYearChange={setSelectedYear}
+              years={years}
+              sortOrder={sortOrder}
+              onSortChange={setSortOrder}
+            />
           </div>
-        <div className="min-h-screen bg-base-100 p-6">
-          {loading && <p className="text-center text-lg mt-10">Loading movies...</p>}
-          {error && <p className="text-center text-red-500 text-lg mt-10">Error loading movies: {error}</p>}
-          {!loading && !error && (
-            <div className="flex justify-center mb-6">
-              <SearchBar
-                searchQuery={searchQuery}
-                onSearchChange={setSearchQuery}
-                selectedGenre={selectedGenre}
-                onGenreChange={setSelectedGenre}
-                genres={genres}
-                selectedAgeGroup={selectedAgeGroup}
-                onAgeGroupChange={setSelectedAgeGroup}
-                ageGroups={ageGroups}
-                selectedYear={selectedYear}
-                onYearChange={setSelectedYear}
-                years={years}
-                sortOrder={sortOrder}
-                onSortChange={setSortOrder}
-              />
-            </div>
-          )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {filteredMovies.map((movie) => (
-              <MovieCard
-                key={movie.title}
-                movie={movie}
-                isWishlisted={wishlist.some((m) => m.title === movie.title)}
-                isWatched={watched.some((m) => m.title === movie.title)}
-                onToggleWishlist={toggleWishlist}
-                onToggleWatched={toggleWatched}
-              />
-            ))}
-          </div>
+        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {paginatedMovies.map((movie) => (
+            <MovieCard
+              key={movie.title}
+              movie={movie}
+              isWishlisted={wishlist.some((m) => m.title === movie.title)}
+              isWatched={watched.some((m) => m.title === movie.title)}
+              onToggleWishlist={toggleWishlist}
+              onToggleWatched={toggleWatched}
+            />
+          ))}
         </div>
-          <div className='footer'>
-              <Footer/>
-          </div>
-          </>
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
+      <div className='footer'>
+        <Footer />
+      </div>
+    </>
   );
 }
 
