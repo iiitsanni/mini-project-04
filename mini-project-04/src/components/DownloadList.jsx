@@ -22,7 +22,7 @@ const DownloadList = ({ movies = [], listTitle = 'My List' }) => (
             <Text style={styles.title}>{listTitle}</Text>
             {movies.map((movie, index) => (
                 <Text key={movie.title} style={styles.item}>
-                    {index + 1}. {movie.title}
+                    {index + 1}. {movie.title} - {movie.releasing_year ? `(${movie.releasing_year})` : ''} - {movie.genre} - IMDB Rating: {movie.imdb_rating} - {movie.runtime} 
                 </Text>
             ))}
         </Page>

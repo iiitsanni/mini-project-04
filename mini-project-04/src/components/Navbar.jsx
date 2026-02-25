@@ -83,7 +83,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                 <div className="drawer-side z-50">
                     <label htmlFor="wishlist-drawer" className="drawer-overlay"> </label>
                     <div className="menu bg-base-200 min-h-full w-80 p-6 flex flex-col">
-                        <h2 className="text-xl font-bold mb-4">Watchlist</h2>
+                        <h2 className="text-xl font-bold mb-4">Wishlist</h2>
                         <ul className="space-y-2 flex-1">
                             {wishlist.map((movie) => (
                                 <li key={movie.title} className="flex flex-row justify-between items-center border-b pb-2">
@@ -94,8 +94,8 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                         </ul>
                         <div className="mt-4">
                             <PDFDownloadLink
-                                document={<DownloadList movies={wishlist} listTitle="My Watchlist" />}
-                                fileName="watchlist.pdf"
+                                document={<DownloadList movies={wishlist} listTitle="My Wishlist" />}
+                                fileName="wishlist.pdf"
                             >
                                 {({ loading }) => (
                                     <button className="btnD btn-primary w-full" disabled={loading || wishlist.length === 0}>

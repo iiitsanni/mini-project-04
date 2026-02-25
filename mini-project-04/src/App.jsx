@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Pagination from "./components/Pagination";
 import Loader from "./components/loader.jsx";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -113,8 +115,10 @@ function App() {
     const exists = wishlist.find((m) => m.title === movie.title);
     if (exists) {
       setWishlist(wishlist.filter((m) => m.title !== movie.title));
+      toast.info(`"${movie.title}" removed from wishlist`);
     } else {
       setWishlist([...wishlist, movie]);
+      toast.success(`"${movie.title}" added to wishlist`);
     }
   };
 
@@ -123,8 +127,10 @@ function App() {
     const exists = watched.find((m) => m.title === movie.title);
     if (exists) {
       setWatched(watched.filter((m) => m.title !== movie.title));
+      toast.info(`"${movie.title}" removed from watched`);
     } else {
       setWatched([...watched, movie]);
+      toast.success(`"${movie.title}" added to watched`);
     }
   };
 
@@ -146,6 +152,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer position="bottom-right" autoClose={2000} theme="dark" />
       <div className='navbar'>
         <Navbar wishlist={wishlist} removeMovie={removeMovie} watched={watched} removeWatched={removeWatched}/>
       </div>
@@ -172,18 +179,24 @@ function App() {
             />
           </div>
         )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {paginatedMovies.map((movie) => (
-            <MovieCard
-              key={movie.title}
-              movie={movie}
-              isWishlisted={wishlist.some((m) => m.title === movie.title)}
-              isWatched={watched.some((m) => m.title === movie.title)}
-              onToggleWishlist={toggleWishlist}
-              onToggleWatched={toggleWatched}
-            />
-          ))}
-        </div>
+        {filteredMovies.length === 0 && !loading && !error ? (
+          <p className="text-center text-lg mt-20" style={{ color: '#ffffff' }}>
+            No movies found for the specified filters.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {paginatedMovies.map((movie) => (
+              <MovieCard
+                key={movie.title}
+                movie={movie}
+                isWishlisted={wishlist.some((m) => m.title === movie.title)}
+                isWatched={watched.some((m) => m.title === movie.title)}
+                onToggleWishlist={toggleWishlist}
+                onToggleWatched={toggleWatched}
+              />
+            ))}
+          </div>
+        )}
 
         <Pagination
           currentPage={currentPage}
