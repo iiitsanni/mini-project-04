@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
 import Pagination from "./components/Pagination";
+import Loader from "./components/loader.jsx";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -106,16 +107,21 @@ function App() {
   };
 
   const removeMovie = (title) => {
-    setWishlist(wishlist.filter((m) => m.title !== title));
+      const newList = wishlist.filter((m) => m.title !== title);
+        setWishlist(newList);
   };
+  const removeWatched = (title) => {
+      const newWatched = watched.filter((m) => m.title !== title);
+        setWatched(newWatched);
+  }
 
   return (
     <>
       <div className='navbar'>
-        <Navbar wishlist={wishlist} removeMovie={removeMovie} />
+        <Navbar wishlist={wishlist} removeMovie={removeMovie} watched={watched} removeWatched={removeWatched}/>
       </div>
       <div className="min-h-screen bg-base-100 p-6">
-        {loading && <p className="text-center text-lg mt-10">Loading movies...</p>}
+        {loading && (<Loader />)}
         {error && <p className="text-center text-red-500 text-lg mt-10">Error loading movies: {error}</p>}
         {!loading && !error && (
           <div className="flex justify-center mb-6">

@@ -4,7 +4,7 @@ import { MdOutlineLiveTv } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 //import logo from "../assets/JAS-Movie-logo-removebg-preview.png";
 
-const Navbar = ({ wishlist, removeMovie }) => {
+const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
 
     const handleMovies = (movies) => {
         if (movies.length === 0) {
@@ -31,7 +31,7 @@ const Navbar = ({ wishlist, removeMovie }) => {
                     {/*<span className="badge badge-sm indicator-item">0</span>*/}
                 </div>
               </div>
-              <div
+                <div
                 tabIndex={0}
                 className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
                 <div className="card-body">
@@ -50,6 +50,32 @@ const Navbar = ({ wishlist, removeMovie }) => {
                 </div>
               </div>
             </div>
+
+              <div className="dropdown dropdown-end">
+                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                      <div className="indicator">
+                          <svg xmlns="http://www.w3.org/2000/svg" stroke='currentColor' fill="currentColor" viewBox="0 0 576 512" className="h-[1em] w-[1em]"> <path d="M572.52 241.4C518.29 135.5 407.8 64 288 64S57.71 135.5 3.48 241.4a48.07 48.07 0 0 0 0 29.2C57.71 376.5 168.2 448 288 448s230.29-71.5 284.52-177.4a48.07 48.07 0 0 0 0-29.2zM288 400a144 144 0 1 1 144-144 144 144 0 0 1-144 144zm0-240a96 96 0 1 0 96 96 96 96 0 0 0-96-96z"/> </svg>
+                      </div>
+                  </div>
+                  <div
+                      tabIndex={0}
+                      className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
+                      <div className="card-body">
+                          <span className="text-lg font-bold">Already watched</span>
+                          <ul className="text-sm max-h-40 overflow-y-auto">
+                              {watched.map((movie) => (
+                                  <li key={movie.title} className="py-1 border-b flex justify-between items-center">
+                                      <span>{movie.title}</span>
+                                      <button onClick={() =>  removeWatched(movie.title)} className="btnD text-xs px-2 py-1">Remove</button>
+                                  </li>
+                              ))}
+                          </ul>
+                          <div className="card-actions">
+                              <button className="btnD btn-primary btn-block">Download List</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center">
@@ -67,7 +93,6 @@ const Navbar = ({ wishlist, removeMovie }) => {
                     Profile
                   </a>
                 </li>
-                <li><a>Already watched</a></li>
                 <li><a>Logout</a></li>
               </ul>
             </div>
