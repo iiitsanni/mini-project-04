@@ -2,6 +2,8 @@ import React from 'react';
 import "./Navbar.css";
 import { MdOutlineLiveTv } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import DownloadList from './DownloadList';
 //import logo from "../assets/JAS-Movie-logo-removebg-preview.png";
 
 const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
@@ -45,7 +47,16 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                         ))}
                     </ul>
                     <div className="card-actions">
-                    <button className="btnD btn-primary btn-block">Download List</button>
+                        <PDFDownloadLink
+                            document={<DownloadList movies={wishlist} listTitle="My Watchlist" />}
+                            fileName="watchlist.pdf"
+                        >
+                            {({ loading }) => (
+                                <button className="btnD btn-primary btn-block" disabled={loading || wishlist.length === 0}>
+                                    {loading ? 'Preparing...' : 'Download List'}
+                                </button>
+                            )}
+                        </PDFDownloadLink>
                   </div>
                 </div>
               </div>
@@ -71,7 +82,16 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                               ))}
                           </ul>
                           <div className="card-actions">
-                              <button className="btnD btn-primary btn-block">Download List</button>
+                              <PDFDownloadLink
+                                  document={<DownloadList movies={watched} listTitle="Already Watched" />}
+                                  fileName="already-watched.pdf"
+                              >
+                                  {({ loading }) => (
+                                      <button className="btnD btn-primary btn-block" disabled={loading || watched.length === 0}>
+                                          {loading ? 'Preparing...' : 'Download List'}
+                                      </button>
+                                  )}
+                              </PDFDownloadLink>
                           </div>
                       </div>
                   </div>
