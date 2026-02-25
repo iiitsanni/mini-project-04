@@ -21,6 +21,9 @@ function App() {
 
   // Fetch movie data on mount
   useEffect(() => {
+    const MIN_LOADING_MS = 2000; // Minimum loading time in ms
+    const start = Date.now();
+
     fetch("/movie.json")
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -28,7 +31,11 @@ function App() {
       })
       .then((data) => setMovies(data))
       .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        const elapsed = Date.now() - start;
+        const remaining = Math.max(0, MIN_LOADING_MS - elapsed);
+        setTimeout(() => setLoading(false), remaining);
+      });
   }, []);
 
   const genres = useMemo(
@@ -113,6 +120,13 @@ function App() {
   const removeWatched = (title) => {
       const newWatched = watched.filter((m) => m.title !== title);
         setWatched(newWatched);
+  }
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', background: '#031926' }}> 
+        <Loader />
+      </div>
+    );
   }
 
   return (
