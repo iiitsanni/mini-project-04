@@ -13,6 +13,9 @@
 body{
     background-color: var(---warmsand) !important;
 }
+.background{
+    background-color: var(---warmsand);
+}
 
 .logo {
   height: 6em;
