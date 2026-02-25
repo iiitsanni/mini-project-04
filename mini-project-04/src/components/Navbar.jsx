@@ -18,37 +18,23 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
 
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
-          <div className="flex-1">
-            <a className="btn btn-ghost text-xl">JAS Movies</a>
-          </div>
-          <div className="flex-none">
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-                <div className="indicator">
-                    <FaRegHeart className='text-xl' />
-                    {/*<span className="badge badge-sm indicator-item">0</span>*/}
-                </div>
-              </div>
-                <div
-                tabIndex={0}
-                className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
-                <div className="card-body">
-                  <span className="text-lg font-bold">Watchlist</span>
-                    <ul className="text-sm max-h-40 overflow-y-auto">
-                        {wishlist.map((movie) => (
-                            <li key={movie.title} className="py-1 border-b flex justify-between items-center">
-                                <span>{movie.title}</span>
-                                <button onClick={() =>  removeMovie(movie.title)} className="btnD text-xs px-2 py-1">Remove</button>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="card-actions">
-                    <button className="btnD btn-primary btn-block">Download List</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="drawer drawer-end">
+            <input id="wishlist-drawer" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+                <div className="navbar bg-base-100 shadow-sm">
+                    <div className="flex-1">
+                        <a className="btn btn-ghost text-xl">JAS Movies</a>
+                    </div>
+
+                    <div className="flex-none">
+                        <label
+                            htmlFor="wishlist-drawer"
+                            className="btn btn-ghost btn-circle drawer-button"
+                        >
+                            <FaRegHeart className='text-xl' />
+                        </label>
+                    </div>
+
 
               <div className="dropdown dropdown-end">
                   <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -96,7 +82,42 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
               </ul>
             </div>
           </div>
+            </div>
+    <div className="drawer-side z-50">
+        <label
+            htmlFor="wishlist-drawer"
+            className="drawer-overlay"
+        ></label>
+
+        <div className="menu bg-base-200 min-h-full w-80 p-6">
+            <h2 className="text-xl font-bold mb-4">
+                Watchlist
+            </h2>
+
+            <ul className="space-y-2">
+                {wishlist.map((movie) => (
+                    <li
+                        key={movie.title}
+                        className="flex flex-row justify-between items-center border-b pb-2"
+                    >
+                        <span>{movie.title}</span>
+                        <button
+                            onClick={() =>
+                                removeMovie(movie.title)
+                            }
+                            className="btnD text-xs px-2 py-1"
+                        >
+                            Remove
+                        </button>
+                    </li>
+                ))}
+            </ul>
+            <div className="mt-auto">
+                <button className="btnD btn-primary w-full">Download List</button>
+            </div>
         </div>
+    </div>
+</div>
     );
 }
 
