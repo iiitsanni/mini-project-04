@@ -8,8 +8,14 @@ import Loader from "./components/loader.jsx";
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
-  const [watched, setWatched] = useState([]);
+  const [wishlist, setWishlist] = useState(() => {
+    const saved = localStorage.getItem("wishlist");
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [watched, setWatched] = useState(() => {
+    const saved = localStorage.getItem("watched");
+    return saved ? JSON.parse(saved) : [];
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,6 +27,9 @@ function App() {
 
   // Fetch movie data on mount
   useEffect(() => {
+    const MIN_LOADING_MS = 2000; // Minimum loading time in ms
+    const start = Date.now();
+
     fetch("/movie.json")
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -28,7 +37,11 @@ function App() {
       })
       .then((data) => setMovies(data))
       .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        const elapsed = Date.now() - start;
+        const remaining = Math.max(0, MIN_LOADING_MS - elapsed);
+        setTimeout(() => setLoading(false), remaining);
+      });
   }, []);
 
   const genres = useMemo(
@@ -86,6 +99,15 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
 
+  // Persist wishlist and watched to localStorage
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
+
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
+
   // Toggle wishlist
   const toggleWishlist = (movie) => {
     const exists = wishlist.find((m) => m.title === movie.title);
@@ -113,6 +135,13 @@ function App() {
   const removeWatched = (title) => {
       const newWatched = watched.filter((m) => m.title !== title);
         setWatched(newWatched);
+  }
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', background: '#031926' }}> 
+        <Loader />
+      </div>
+    );
   }
 
   return (
