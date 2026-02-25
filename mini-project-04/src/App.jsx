@@ -120,6 +120,7 @@ function App() {
       <div className='navbar'>
         <Navbar wishlist={wishlist} removeMovie={removeMovie} watched={watched} removeWatched={removeWatched}/>
       </div>
+    <div className='background'>
       <div className="min-h-screen bg-base-100 p-6">
         {loading && (<Loader />)}
         {error && <p className="text-center text-red-500 text-lg mt-10">Error loading movies: {error}</p>}
@@ -161,9 +162,11 @@ function App() {
           onPageChange={setCurrentPage}
         />
       </div>
+    </div>
       <div className='footer'>
         <Footer />
       </div>
+
     </>
   );
 }
