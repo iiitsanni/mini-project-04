@@ -8,8 +8,14 @@ import Loader from "./components/loader.jsx";
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
-  const [watched, setWatched] = useState([]);
+  const [wishlist, setWishlist] = useState(() => {
+    const saved = localStorage.getItem("wishlist");
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [watched, setWatched] = useState(() => {
+    const saved = localStorage.getItem("watched");
+    return saved ? JSON.parse(saved) : [];
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -92,6 +98,15 @@ function App() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage]);
+
+  // Persist wishlist and watched to localStorage
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
+
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
 
   // Toggle wishlist
   const toggleWishlist = (movie) => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import "./Navbar.css";
-import { MdOutlineLiveTv } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
 //import logo from "../assets/JAS-Movie-logo-removebg-preview.png";
 
 const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
@@ -27,7 +26,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                 <div className="indicator">
-                    <MdOutlineLiveTv className='text-xl' />
+                    <FaRegHeart className='text-xl' />
                     {/*<span className="badge badge-sm indicator-item">0</span>*/}
                 </div>
               </div>
