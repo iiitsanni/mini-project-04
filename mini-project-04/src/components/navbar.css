@@ -17,8 +17,11 @@
     width: 100%;
 }
 .navbar {
-    background-color: var(---mediumteal);
-    color: var(---warmsand);
+    margin-top: 15px;
+    border-radius: 30px;
+    position: fixed;
+    background-color: var(---softteal);
+    color: var(---deepnavy);
     z-index: 50;
 }
 .indicator {
@@ -60,10 +63,9 @@
     justify-content: center;
 }
 .menu{
-    margin-top: 15px;
-    background-color: var(---darkblue);
-    color: var(---mediumteal);
-    box-shadow: var(---mediumteal)10px 10px;
+    background-color: var(---softteal);
+    color: var(---darkblue);
+    box-shadow: var(---warmsand)10px 10px;
     border: 1px solid var(---deepnavy);
 }
 

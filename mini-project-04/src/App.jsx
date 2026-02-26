@@ -171,7 +171,7 @@ function App() {
     <div className='background flex flex-col items-center text-center px-6 py-10 bg-[#031926]'>
         <div className='justify-center align-middle'>
             <div className='flex flex-col items-center justify-center'>
-            <RiMovie2AiFill className='text-6xl md:text-8xl mb-6 text-[#77ACA2] justify-center'  />
+            <RiMovie2AiFill className='text-6xl md:text-8xl mb-6 mt-15 text-[#77ACA2] justify-center'  />
         </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#77ACA2] m-10">Welcome to <span className="text-[#F4E9CD]"> JAS Movies!</span></h1>
         <p className='text-lg md:text-xl text-[#77ACA2] max-w-3xl m-10'> Browse, search, and filter your favorite movies. Add the ones you love to your Watchlist or mark them as Already Watched. You can even download your lists as PDFs to keep track of your movie adventures!</p>
