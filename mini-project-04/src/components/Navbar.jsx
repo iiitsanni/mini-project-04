@@ -1,28 +1,15 @@
-import React from 'react';
 import "./Navbar.css";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
-//import logo from "../assets/JAS-Movie-logo-removebg-preview.png";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import DownloadList from "./DownloadList";
 
+// Navbar with wishlist and watched drawers, PDF download, and user profile dropdown
 const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
-
-    const handleMovies = (movies) => {
-        if (movies.length === 0) {
-            return (
-                <p className="text-sm">
-                    No movies added yet
-                </p>
-            );
-        }
-    }
-
-
 
     return (
         <>
-        <div className="drawer drawer-end w-full">
+        <div className="drawer drawer-end">
             <input id="wishlist-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content w-full">
                 <div className="navbar bg-base-100 shadow-sm w-full">

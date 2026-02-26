@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Footer with navigation links, social media icons, and copyright
 const Footer = () => {
     return (
 <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Search input and filter dropdowns for genre, age group, year, and sorting
 const SearchBar = ({
   searchQuery, onSearchChange,
   selectedGenre, onGenreChange, genres,
@@ -68,7 +69,8 @@ const SearchBar = ({
           value={sortOrder}
           onChange={(e) => onSortChange(e.target.value)}
         >
-          <option value="">Sort by...</option>
+          <option value="year-desc">Year: Newest First</option>
+          <option value="year-asc">Year: Oldest First</option>
           <option value="rating-desc">Rating: High to Low</option>
           <option value="rating-asc">Rating: Low to High</option>
           <option value="title-asc">Title: A → Z</option>
