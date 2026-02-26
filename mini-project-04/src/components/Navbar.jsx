@@ -98,7 +98,6 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                     </li>
                 ))}
             </ul>
-            <div className="mt-auto">
                 <PDFDownloadLink
                     document={<DownloadList movies={wishlist} listTitle="My Wishlist" />}
                     fileName="MyWishlist.pdf"
@@ -108,7 +107,6 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                         loading ? "Generating PDF..." : "Download List"
                     }
                 </PDFDownloadLink>
-            </div>
         </div>
     </div>
         </div>
