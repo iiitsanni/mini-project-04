@@ -17,7 +17,7 @@
     width: 100%;
 }
 .navbar {
-    background-color: var(---darkblue);
+    background-color: var(---mediumteal);
     color: var(---warmsand);
     z-index: 50;
 }
@@ -61,9 +61,9 @@
 }
 .menu{
     margin-top: 15px;
-    background-color: var(---mutedaqua);
-    color: var(---darkblue);
-    box-shadow: var(---darkblue)10px 10px;
+    background-color: var(---darkblue);
+    color: var(---mediumteal);
+    box-shadow: var(---mediumteal)10px 10px;
     border: 1px solid var(---deepnavy);
 }
 

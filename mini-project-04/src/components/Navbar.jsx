@@ -30,7 +30,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                         >
                                 <svg xmlns="http://www.w3.org/2000/svg" stroke='currentColor' fill="currentColor" viewBox="0 0 576 512" className="h-[1em] w-[1em] text-xl"> <path d="M572.52 241.4C518.29 135.5 407.8 64 288 64S57.71 135.5 3.48 241.4a48.07 48.07 0 0 0 0 29.2C57.71 376.5 168.2 448 288 448s230.29-71.5 284.52-177.4a48.07 48.07 0 0 0 0-29.2zM288 400a144 144 0 1 1 144-144 144 144 0 0 1-144 144zm0-240a96 96 0 1 0 96 96 96 96 0 0 0-96-96z"/> </svg>
                         </label>
-            <div className="dropdown dropdown-end">
+            <div className="dropdown dropdown-end ">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center">
                     <FaRegUser className='text-xl' />
@@ -41,7 +41,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow bg-[#031926]">
                 <li>
                   <a className="justify-between">
                     Profile
