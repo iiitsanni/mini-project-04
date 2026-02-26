@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Navbar.css";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
+import { IoIosClose } from "react-icons/io";
 //import logo from "../assets/JAS-Movie-logo-removebg-preview.png";
 
 const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
@@ -21,7 +22,6 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
         <>
         <div className="drawer drawer-end">
             <input id="wishlist-drawer" type="checkbox" className="drawer-toggle" />
-            <input id="watched-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
                 <div className="navbar bg-base-100 shadow-sm">
                     <div className="flex-1">
@@ -70,9 +70,13 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
         > </label>
 
         <div className="menu bg-base-200 min-h-full w-80 p-6">
-            <h2 className="text-xl font-bold mb-4">
+            <h2 className="text-xl font-bold mb-4 flex flex-row justify-between items-center border-b pb-2">
                 Watchlist
+                <label htmlFor="wishlist-drawer" className="cursor-pointer">
+                    <IoIosClose />
+                </label>
             </h2>
+
 
             <ul className="space-y-2">
                 {wishlist.map((movie) => (
@@ -98,14 +102,18 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
         </div>
     </div>
         </div>
+        <div className="drawer drawer-end">
+            <input id="watched-drawer" type="checkbox" className="drawer-toggle" />
 
         <div className="drawer-content"></div>
 
         <div className="drawer-side">
             <label htmlFor="watched-drawer" className="drawer-overlay"></label>
 
-            <div className="menu bg-base-200 min-h-full w-80 p-6">
-                <h2 className="text-xl font-bold mb-4">Already Watched</h2>
+            <div className="menu bg-base-200 min-h-full w-80 p-6 ">
+                <h2 className="text-xl font-bold mb-4 flex flex-row justify-between items-center border-b pb-2">Already Watched <label htmlFor="watched-drawer" className="cursor-pointer">
+                    <IoIosClose />
+                </label></h2>
 
                 <ul className="space-y-2">
                     {watched.map((movie) => (
@@ -124,6 +132,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                     ))}
                 </ul>
             </div>
+        </div>
         </div>
 </>
 );};
