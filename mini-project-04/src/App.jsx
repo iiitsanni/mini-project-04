@@ -7,6 +7,7 @@ import Pagination from "./components/Pagination";
 import Loader from "./components/loader.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { RiMovie2AiFill } from "react-icons/ri";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -169,7 +170,10 @@ function App() {
       </div>
     <div className='background flex flex-col items-center text-center px-6 py-10 bg-[#9DBEBB]'>
         <div className='justify-center align-middle'>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#031926] m-10">Welcome to <span className="text-[#F4E9CD]"> JAS Movies!</span></h1>
+            <div className='flex flex-col items-center justify-center'>
+            <RiMovie2AiFill className='text-6xl md:text-8xl mb-6 text-[#031926] justify-center'  />
+        </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#031926] m-10">Welcome to <span className="text-[#F4E9CD]"> JAS Movies!</span></h1>
         <p className='text-lg md:text-xl text-[#031926] max-w-3xl m-10'> Browse, search, and filter your favorite movies. Add the ones you love to your Watchlist or mark them as Already Watched. You can even download your lists as PDFs to keep track of your movie adventures!</p>
     </div>
         <div className="min-h-screen bg-[#9DBEBB] p-6 ">
