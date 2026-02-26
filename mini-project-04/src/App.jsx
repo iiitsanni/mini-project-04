@@ -9,6 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RiMovie2AiFill } from "react-icons/ri";
 
+
 function App() {
   const [movies, setMovies] = useState([]);
   const [wishlist, setWishlist] = useState(() => {

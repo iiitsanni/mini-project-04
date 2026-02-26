@@ -3,6 +3,7 @@ import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import DownloadList from "./DownloadList";
+import { RiMovie2AiLine } from "react-icons/ri";
 
 // Navbar with wishlist and watched drawers, PDF download, and user profile dropdown
 const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
@@ -14,7 +15,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
             <div className="drawer-content w-full">
                 <div className="navbar bg-base-100 shadow-sm w-full">
                     <div className="flex-1">
-                        <a className="btn btn-ghost text-xl">JAS Movies</a>
+                        <a className="btn btn-ghost text-xl"> <RiMovie2AiLine /> JAS Movies</a>
                     </div>
 
                     <div className="flex-none">
