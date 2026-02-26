@@ -153,7 +153,7 @@ function App() {
   return (
     <>
       <ToastContainer position="bottom-right" autoClose={2000} theme="dark" />
-      <div className='navbar'>
+      <div className='navbar-wrapper'>
         <Navbar wishlist={wishlist} removeMovie={removeMovie} watched={watched} removeWatched={removeWatched}/>
       </div>
     <div className='background'>

@@ -22,10 +22,10 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
 
     return (
         <>
-        <div className="drawer drawer-end">
+        <div className="drawer drawer-end w-full">
             <input id="wishlist-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                <div className="navbar bg-base-100 shadow-sm">
+            <div className="drawer-content w-full">
+                <div className="navbar bg-base-100 shadow-sm w-full">
                     <div className="flex-1">
                         <a className="btn btn-ghost text-xl">JAS Movies</a>
                     </div>

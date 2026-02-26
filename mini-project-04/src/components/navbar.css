@@ -10,6 +10,12 @@
 .dropdown{
     padding:5px;
 }
+.navbar-wrapper {
+    background-color: var(---darkblue);
+    color: var(---warmsand);
+    z-index: 50;
+    width: 100%;
+}
 .navbar {
     background-color: var(---darkblue);
     color: var(---warmsand);
