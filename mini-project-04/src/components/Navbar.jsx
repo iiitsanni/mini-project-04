@@ -3,6 +3,8 @@ import "./Navbar.css";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 //import logo from "../assets/JAS-Movie-logo-removebg-preview.png";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import DownloadList from "./DownloadList";
 
 const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
 
@@ -69,7 +71,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
             className="drawer-overlay"
         > </label>
 
-        <div className="menu bg-base-200 min-h-full w-80 p-6">
+        <div className="menu bg-base-200 min-h-full w-80 p-6 flex flex-col">
             <h2 className="text-xl font-bold mb-4 flex flex-row justify-between items-center border-b pb-2">
                 Watchlist
                 <label htmlFor="wishlist-drawer" className="cursor-pointer">
@@ -78,7 +80,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
             </h2>
 
 
-            <ul className="space-y-2">
+            <ul className="space-y-2 flex-grow">
                 {wishlist.map((movie) => (
                     <li
                         key={movie.title}
@@ -97,7 +99,15 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                 ))}
             </ul>
             <div className="mt-auto">
-                <button className="btnD btn-primary w-full">Download List</button>
+                <PDFDownloadLink
+                    document={<DownloadList movies={wishlist} listTitle="My Wishlist" />}
+                    fileName="MyWishlist.pdf"
+                    className="btnD btn-primary w-full text-center "
+                >
+                    {({ loading }) =>
+                        loading ? "Generating PDF..." : "Download List"
+                    }
+                </PDFDownloadLink>
             </div>
         </div>
     </div>
@@ -110,16 +120,16 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
         <div className="drawer-side">
             <label htmlFor="watched-drawer" className="drawer-overlay"></label>
 
-            <div className="menu bg-base-200 min-h-full w-80 p-6 ">
+            <div className="menu bg-base-200 min-h-full w-80 p-6 flex flex-col ">
                 <h2 className="text-xl font-bold mb-4 flex flex-row justify-between items-center border-b pb-2">Already Watched <label htmlFor="watched-drawer" className="cursor-pointer">
                     <IoIosClose />
                 </label></h2>
 
-                <ul className="space-y-2">
+                <ul className="space-y-2 flex-grow">
                     {watched.map((movie) => (
                         <li
                             key={movie.title}
-                            className="flex justify-between items-center border-b pb-2"
+                            className="flex flex-row justify-between items-center border-b pb-2"
                         >
                             <span>{movie.title}</span>
                             <button
@@ -131,6 +141,15 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                         </li>
                     ))}
                 </ul>
+                <PDFDownloadLink
+                    document={<DownloadList movies={watched} listTitle="My Already watched List" />}
+                    fileName="MyAlreadyWatched.pdf"
+                    className="btnD btn-primary w-full text-center"
+                >
+                    {({ loading }) =>
+                        loading ? "Generating PDF..." : "Download List"
+                    }
+                </PDFDownloadLink>
             </div>
         </div>
         </div>

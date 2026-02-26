@@ -2,30 +2,32 @@ import React from 'react';
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 
-// Create styles
 const styles = StyleSheet.create({
     page: {
-        flexDirection: 'row',
-        backgroundColor: '#E4E4E4'
+        padding: 40,
+        fontFamily: 'Helvetica',
     },
-    section: {
-        margin: 10,
-        padding: 10,
-        flexGrow: 1
-    }
+    title: {
+        fontSize: 18,
+        marginBottom: 16,
+    },
+    item: {
+        fontSize: 12,
+        marginBottom: 6,
+    },
 });
 
-// Create Document Component
-const DownloadList = ({wishlist}) => (
+const DownloadList = ({ movies = [], listTitle = 'My List' }) => (
     <Document>
         <Page size="A4" style={styles.page}>
-            <View style={styles.section}>
-                <Text>Section #1</Text>
-            </View>
-            <View style={styles.section}>
-                <Text>Section #2</Text>
-            </View>
+            <Text style={styles.title}>{listTitle}</Text>
+            {movies.map((movie, index) => (
+                <Text key={movie.title} style={styles.item}>
+                    {index + 1}. {movie.title} - {movie.releasing_year ? `(${movie.releasing_year})` : ''} - {movie.genre} - IMDB Rating: {movie.imdb_rating} - {movie.runtime} 
+                </Text>
+            ))}
         </Page>
     </Document>
 );
+
 export default DownloadList;
