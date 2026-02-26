@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Page navigation buttons, hidden when there is only one page
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   if (totalPages <= 1) return null;
 

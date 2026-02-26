@@ -1,7 +1,7 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { Page, Text, Document, StyleSheet } from '@react-pdf/renderer';
 
-
+// PDF document template for downloading wishlisted or watched movie lists
 const styles = StyleSheet.create({
     page: {
         padding: 40,

@@ -24,7 +24,7 @@ function App() {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
   const [selectedYear, setSelectedYear] = useState("");
-  const [sortOrder, setSortOrder] = useState("");
+  const [sortOrder, setSortOrder] = useState("year-desc");
   const [currentPage, setCurrentPage] = useState(1);
 
   // Fetch movie data on mount
@@ -75,7 +75,9 @@ function App() {
       return matchesSearch && matchesGenre && matchesAgeGroup && matchesYear;
     });
 
-    if (sortOrder === "rating-desc") result = [...result].sort((a, b) => b.imdb_rating - a.imdb_rating);
+    if (sortOrder === "year-desc") result = [...result].sort((a, b) => b.releasing_year - a.releasing_year);
+    else if (sortOrder === "year-asc") result = [...result].sort((a, b) => a.releasing_year - b.releasing_year);
+    else if (sortOrder === "rating-desc") result = [...result].sort((a, b) => b.imdb_rating - a.imdb_rating);
     else if (sortOrder === "rating-asc") result = [...result].sort((a, b) => a.imdb_rating - b.imdb_rating);
     else if (sortOrder === "title-asc") result = [...result].sort((a, b) => a.title.localeCompare(b.title));
     else if (sortOrder === "title-desc") result = [...result].sort((a, b) => b.title.localeCompare(a.title));
@@ -91,10 +93,19 @@ function App() {
     return filteredMovies.slice(startIndex, endIndex);
   }, [filteredMovies, currentPage]);
 
-  // Reset to page 1 when filters change
+  // Toast when no movies match filters
   useEffect(() => {
-    setCurrentPage(1);
-  }, [searchQuery, selectedGenre, selectedAgeGroup, selectedYear, sortOrder]);
+    if (!loading && !error && filteredMovies.length === 0) {
+      toast.warn("No movies found for the specified filters.");
+    }
+  }, [filteredMovies.length, loading, error]);
+
+  // Reset to page 1 when filters change
+  const handleSearchChange = (val) => { setSearchQuery(val); setCurrentPage(1); };
+  const handleGenreChange = (val) => { setSelectedGenre(val); setCurrentPage(1); };
+  const handleAgeGroupChange = (val) => { setSelectedAgeGroup(val); setCurrentPage(1); };
+  const handleYearChange = (val) => { setSelectedYear(val); setCurrentPage(1); };
+  const handleSortChange = (val) => { setSortOrder(val); setCurrentPage(1); };
 
   // Scroll to top when page changes
   useEffect(() => {
@@ -164,18 +175,18 @@ function App() {
           <div className="flex justify-center mb-6">
             <SearchBar
               searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
+              onSearchChange={handleSearchChange}
               selectedGenre={selectedGenre}
-              onGenreChange={setSelectedGenre}
+              onGenreChange={handleGenreChange}
               genres={genres}
               selectedAgeGroup={selectedAgeGroup}
-              onAgeGroupChange={setSelectedAgeGroup}
+              onAgeGroupChange={handleAgeGroupChange}
               ageGroups={ageGroups}
               selectedYear={selectedYear}
-              onYearChange={setSelectedYear}
+              onYearChange={handleYearChange}
               years={years}
               sortOrder={sortOrder}
-              onSortChange={setSortOrder}
+              onSortChange={handleSortChange}
             />
           </div>
         )}

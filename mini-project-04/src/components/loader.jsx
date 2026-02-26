@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Animated walking character loader shown during data fetching
 const Loader = () => {
   return (
     <StyledWrapper>

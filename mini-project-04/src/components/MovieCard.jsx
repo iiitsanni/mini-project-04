@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaHeart, FaRegHeart, FaEye, FaRegEye } from "react-icons/fa";
 
+// Displays a single movie card with poster, rating, badges, and wishlist/watched buttons
 const MovieCard = ({ movie, isWishlisted, isWatched, onToggleWishlist, onToggleWatched }) => {
   const [imgError, setImgError] = useState(false);
 
