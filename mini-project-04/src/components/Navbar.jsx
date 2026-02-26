@@ -85,15 +85,21 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                     </li>
                 ))}
             </ul>
-                <PDFDownloadLink
-                    document={<DownloadList movies={wishlist} listTitle="My Wishlist" />}
-                    fileName="MyWishlist.pdf"
-                    className="btnD btn-primary w-full text-center "
-                >
-                    {({ loading }) =>
-                        loading ? "Generating PDF..." : "Download List"
-                    }
-                </PDFDownloadLink>
+                {wishlist.length > 0 ? (
+                    <PDFDownloadLink
+                        document={<DownloadList movies={wishlist} listTitle="My Wishlist" />}
+                        fileName="MyWishlist.pdf"
+                        className="btnD btn-primary w-full text-center "
+                    >
+                        {({ loading }) =>
+                            loading ? "Generating PDF..." : "Download List"
+                        }
+                    </PDFDownloadLink>
+                ) : (
+                    <button disabled className="btnD btn-primary w-full text-center opacity-50 cursor-not-allowed">
+                        Download List
+                    </button>
+                )}
         </div>
     </div>
         </div>
@@ -102,7 +108,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
 
         <div className="drawer-content"></div>
 
-        <div className="drawer-side">
+        <div className="drawer-side z-50">
             <label htmlFor="watched-drawer" className="drawer-overlay"></label>
 
             <div className="menu bg-base-200 min-h-full w-80 p-6 flex flex-col ">
@@ -126,15 +132,21 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
                         </li>
                     ))}
                 </ul>
-                <PDFDownloadLink
-                    document={<DownloadList movies={watched} listTitle="My Already watched List" />}
-                    fileName="MyAlreadyWatched.pdf"
-                    className="btnD btn-primary w-full text-center"
-                >
-                    {({ loading }) =>
-                        loading ? "Generating PDF..." : "Download List"
-                    }
-                </PDFDownloadLink>
+                {watched.length > 0 ? (
+                    <PDFDownloadLink
+                        document={<DownloadList movies={watched} listTitle="My Already watched List" />}
+                        fileName="MyAlreadyWatched.pdf"
+                        className="btnD btn-primary w-full text-center"
+                    >
+                        {({ loading }) =>
+                            loading ? "Generating PDF..." : "Download List"
+                        }
+                    </PDFDownloadLink>
+                ) : (
+                    <button disabled className="btnD btn-primary w-full text-center opacity-50 cursor-not-allowed">
+                        Download List
+                    </button>
+                )}
             </div>
         </div>
         </div>
