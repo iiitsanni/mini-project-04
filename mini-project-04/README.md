@@ -103,3 +103,5 @@ public/
 - [React Toastify](https://fkhadra.github.io/react-toastify/)
 - [@react-pdf/renderer](https://react-pdf.org/)
 - [Claude by Anthropic](https://claude.ai) — used to assist with Git and GitHub workflows
+- [UIverse](https://uiverse.io/LightAndy1/tidy-pig-67)
+- [UIverse](https://uiverse.io/Uncannypotato69/ancient-hound-67)
