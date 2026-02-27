@@ -108,3 +108,4 @@ public/
 - [Claude by Anthropic](https://claude.ai) — used to assist with Git and GitHub workflows
 - [UIverse](https://uiverse.io/LightAndy1/tidy-pig-67)
 - [UIverse](https://uiverse.io/Uncannypotato69/ancient-hound-67)
+- [ReactPDF](https://react-pdf.org/) - help for the download pdf part
