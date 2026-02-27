@@ -7,8 +7,8 @@ A movie browsing web application built with React and Vite. Browse, search, filt
 ## Team Members
 
 - Sebastian Rodriguez
-- *(add name here)*
-- *(add name here)*
+- Jose Araya
+- Annika Maringer
 
 ---
 
