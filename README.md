@@ -5,7 +5,7 @@ A movie browsing web application built with React and Vite. Browse, search, filt
 ---
 
 ## Live Link
- - https://jas-movies.vercel.app/
+ - https://jas-movies-04.vercel.app/
 
 ## Team Members
 
