@@ -81,8 +81,8 @@ src/
 │   ├── SearchBar.jsx     # Search input and filter/sort dropdowns
 │   ├── Pagination.jsx    # Page navigation controls
 │   ├── DownloadList.jsx  # PDF document template
-│   ├── loader.jsx        # Loading animation
-│   └── footer.jsx        # Footer with links and social icons
+│   ├── Loader.jsx        # Loading animation
+│   └── Footer.jsx        # Footer with links and social icons
 ├── App.jsx               # Root component — state management and layout
 ├── main.jsx              # React entry point
 └── index.css             # Global styles

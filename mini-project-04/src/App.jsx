@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import MovieCard from "./components/MovieCard";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer.jsx";
 import SearchBar from "./components/SearchBar";
-import Pagination from "./components/Pagination";
-import Loader from "./components/loader.jsx";
+import Pagination from "./components/Pagination.jsx";
+import Loader from "./components/Loader.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RiMovie2AiFill } from "react-icons/ri";
