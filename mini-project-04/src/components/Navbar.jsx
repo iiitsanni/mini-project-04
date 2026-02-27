@@ -59,7 +59,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
             className="drawer-overlay"
         > </label>
 
-        <div className="menu bg-base-200 min-h-full w-80 p-6 flex flex-col">
+        <div className="menu bg-base-200 min-h-full w-96 p-6 flex flex-col">
             <h2 className="text-xl font-bold mb-4 flex flex-row justify-between items-center border-b pb-2">
                 Watchlist
                 <label htmlFor="wishlist-drawer" className="cursor-pointer">
@@ -112,7 +112,7 @@ const Navbar = ({ wishlist, removeMovie, watched, removeWatched }) => {
         <div className="drawer-side z-50">
             <label htmlFor="watched-drawer" className="drawer-overlay"></label>
 
-            <div className="menu bg-base-200 min-h-full w-80 p-6 flex flex-col ">
+            <div className="menu bg-base-200 min-h-full w-96 p-6 flex flex-col ">
                 <h2 className="text-xl font-bold mb-4 flex flex-row justify-between items-center border-b pb-2">Already Watched <label htmlFor="watched-drawer" className="cursor-pointer">
                     <IoIosClose />
                 </label></h2>
